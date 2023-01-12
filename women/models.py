@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -8,6 +9,10 @@ class Women(models.Model):
     time_update = models.DateTimeField(auto_now=True)
     is_published = models.BooleanField(default=True)
     cat = models.ForeignKey("Category", on_delete=models.PROTECT, null=True)
+    # id пользоват-я который добавил запись
+    # в модели User хранятся все пользова-и по умолчанию
+    user = models.ForeignKey(User, verbose_name='Пользователь', on_delete=models.CASCADE)
+    # on_delete = models.CASCADE - при удалении поль-я будут удаляться все его записи
 
     def __str__(self):
         return self.title

@@ -17,20 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 from women.views import *
-from rest_framework import routers
 
-# создание простого роутера
-router = routers.SimpleRouter()
-router.register(r'women', WomenViewSet)
-
-# при использовании Viewset можно передавать параметры
-# метод для обработки запроса и метод, который вызывается во viewset-е для обработки этого запроса
-# list update - названия стандартных методов
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # пропишем набор автоматически сгенерированных маршрутов
-    path('api/v1/', include(router.urls))   # http://127.0.0.1:8000/api/v1/women
-
-    # path('api/v1/womenlist/', WomenViewSet.as_view({'get': 'list'})),
-    # path('api/v1/womenlist/<int:pk>', WomenViewSet.as_view({'put': 'update'})),
+    path('api/v1/women', WomenAPIList.as_view()),
+    path('api/v1/women/<int:pk>', WomenAPIUpdate.as_view()),
+    path('api/v1/womendelete/<int:pk>', WomenAPIDestroy.as_view()),
 ]
