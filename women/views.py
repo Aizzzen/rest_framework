@@ -19,13 +19,10 @@ class WomenAPIUpdate(generics.RetrieveUpdateAPIView):
     queryset = Women.objects.all()
     serializer_class = WomenSerializer
     permission_classes = (IsAuthenticated, )
-    # можно указыать разрешнные способы аутентифакации
-    # только по токенам
     authentication_classes = (TokenAuthentication, )
 
 
 class WomenAPIDestroy(generics.RetrieveDestroyAPIView):
     queryset = Women.objects.all()
     serializer_class = WomenSerializer
-    # удалять записи может только админ
     permission_classes = (IsAdminOrReadOnly, )

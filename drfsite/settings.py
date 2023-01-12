@@ -127,7 +127,6 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-# настройки для того, чтобы не было возможности взаимодействовать через браузер
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
         'rest_framework.renderers.JSONRenderer',
@@ -140,4 +139,3 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',  # по сессиям
     ]
 }
-# теперь обмен данными между апи и пользователем идет исключительно в JSON формате
